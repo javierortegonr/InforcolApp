@@ -1,0 +1,202 @@
+<div class="limites-container">
+  <div class="header">
+    <h1>LÍMITES</h1>
+  </div>
+
+  <div class="form-section">
+    <h2>LÍMITES POR COBERTURA</h2>
+    <div class="form-container">
+      <form class="limite-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nombreCobertura">NOMBRE DE LA COBERTURA</label>
+            <input
+              type="text"
+              id="nombreCobertura"
+              class="input-field"
+              [(ngModel)]="nuevoLimite.nombreCobertura"
+              name="nombreCobertura"
+              placeholder="Ej: Responsabilidad Civil"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="limiteInferior">LÍMITE INFERIOR</label>
+            <input
+              type="number"
+              id="limiteInferior"
+              class="input-field"
+              [(ngModel)]="nuevoLimite.limiteInferior"
+              name="limiteInferior"
+              placeholder="0"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="limiteSuperior">LÍMITE SUPERIOR</label>
+            <input
+              type="number"
+              id="limiteSuperior"
+              class="input-field"
+              [(ngModel)]="nuevoLimite.limiteSuperior"
+              name="limiteSuperior"
+              placeholder="0"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="valorPorDefecto">VALOR POR DEFECTO</label>
+            <input
+              type="number"
+              id="valorPorDefecto"
+              class="input-field"
+              [(ngModel)]="nuevoLimite.valorPorDefecto"
+              name="valorPorDefecto"
+              placeholder="0"
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="observaciones">OBSERVACIONES GENERALES</label>
+            <textarea
+              id="observaciones"
+              class="textarea-field"
+              [(ngModel)]="nuevoLimite.observaciones"
+              name="observaciones"
+              rows="2"
+              placeholder="Notas adicionales sobre este límite"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <button type="button" class="btn-agregar" (click)="agregarLimite()">
+            + AGREGAR LÍMITE
+          </button>
+          <button type="button" class="btn-limpiar" (click)="limpiarFormulario()">LIMPIAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="table-section">
+    <div class="table-container">
+      <div class="table-wrapper">
+        <table class="limites-table">
+          <thead>
+            <tr>
+              <th>NOMBRE DE LA COBERTURA</th>
+              <th>LÍMITE INFERIOR</th>
+              <th>LÍMITE SUPERIOR</th>
+              <th>VALOR POR DEFECTO</th>
+              <th>OBSERVACIONES GENERALES</th>
+              <th>ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            @if (limites.length === 0) {
+              <tr class="empty-row">
+                <td colspan="6">
+                  No hay límites registrados. Agrega uno nuevo usando el formulario arriba.
+                </td>
+              </tr>
+            } @else {
+              @for (limite of limites; track limite.id) {
+                <tr class="table-row">
+                  <td class="nombre-cell">{{ limite.nombreCobertura }}</td>
+                  <td class="numero-cell">{{ limite.limiteInferior | number }}</td>
+                  <td class="numero-cell">{{ limite.limiteSuperior | number }}</td>
+                  <td class="numero-cell">{{ limite.valorPorDefecto | number }}</td>
+                  <td class="observaciones-cell">{{ limite.observaciones }}</td>
+                  <td class="acciones-cell">
+                    <button type="button" class="btn-editar" (click)="abrirModal(limite)">
+                      EDITAR
+                    </button>
+                    <button type="button" class="btn-eliminar" (click)="eliminarLimite(limite.id)">
+                      ELIMINAR
+                    </button>
+                  </td>
+                </tr>
+              }
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Edición -->
+  @if (mostrarModal) {
+    <div class="modal-overlay" (click)="cerrarModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>EDITAR: {{ limiteEditando?.nombreCobertura }}</h2>
+        <button type="button" class="btn-cerrar" (click)="cerrarModal()">✕</button>
+      </div>
+
+      <form class="modal-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nombreCoberturaEdit">NOMBRE DE LA COBERTURA</label>
+            <input
+              type="text"
+              id="nombreCoberturaEdit"
+              class="input-field"
+              [(ngModel)]="formEditando.nombreCobertura"
+              name="nombreCobertura"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="limiteInferiorEdit">LÍMITE INFERIOR</label>
+            <input
+              type="number"
+              id="limiteInferiorEdit"
+              class="input-field"
+              [(ngModel)]="formEditando.limiteInferior"
+              name="limiteInferior"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="limiteSuperiorEdit">LÍMITE SUPERIOR</label>
+            <input
+              type="number"
+              id="limiteSuperiorEdit"
+              class="input-field"
+              [(ngModel)]="formEditando.limiteSuperior"
+              name="limiteSuperior"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="valorPorDefectoEdit">VALOR POR DEFECTO</label>
+            <input
+              type="number"
+              id="valorPorDefectoEdit"
+              class="input-field"
+              [(ngModel)]="formEditando.valorPorDefecto"
+              name="valorPorDefecto"
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="observacionesEdit">OBSERVACIONES GENERALES</label>
+            <textarea
+              id="observacionesEdit"
+              class="textarea-field"
+              [(ngModel)]="formEditando.observaciones"
+              name="observaciones"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button type="button" class="btn-guardar" (click)="guardarCambios()">GUARDAR</button>
+          <button type="button" class="btn-cancelar" (click)="cerrarModal()">CANCELAR</button>
+        </div>
+      </form>
+    </div>
+  }
+</div>

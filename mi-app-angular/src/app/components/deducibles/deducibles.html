@@ -1,0 +1,206 @@
+<div class="deducibles-container">
+  <div class="header">
+    <h1>DEDUCIBLES</h1>
+  </div>
+
+  <div class="form-section">
+    <h2>LIMITES POR COBERTURA</h2>
+    <div class="form-container">
+      <form class="deducible-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nombreCobertura">NOMBRE DE LA COBERTURA</label>
+            <input
+              type="text"
+              id="nombreCobertura"
+              class="input-field"
+              [(ngModel)]="nuevoDeducible.nombreCobertura"
+              name="nombreCobertura"
+              placeholder="Ej: Responsabilidad Civil"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="limiteInferior">LÍMITE INFERIOR</label>
+            <input
+              type="number"
+              id="limiteInferior"
+              class="input-field"
+              [(ngModel)]="nuevoDeducible.limiteInferior"
+              name="limiteInferior"
+              placeholder="0"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="limiteSuperior">LÍMITE SUPERIOR</label>
+            <input
+              type="number"
+              id="limiteSuperior"
+              class="input-field"
+              [(ngModel)]="nuevoDeducible.limiteSuperior"
+              name="limiteSuperior"
+              placeholder="0"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="valorPorDefecto">VALOR POR DEFECTO</label>
+            <input
+              type="number"
+              id="valorPorDefecto"
+              class="input-field"
+              [(ngModel)]="nuevoDeducible.valorPorDefecto"
+              name="valorPorDefecto"
+              placeholder="0"
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="observaciones">OBSERVACIONES GENERALES</label>
+            <textarea
+              id="observaciones"
+              class="textarea-field"
+              [(ngModel)]="nuevoDeducible.observaciones"
+              name="observaciones"
+              rows="2"
+              placeholder="Notas adicionales sobre esta cobertura"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <button type="button" class="btn-agregar" (click)="agregarDeducible()">
+            + AGREGAR COBERTURA
+          </button>
+          <button type="button" class="btn-limpiar" (click)="limpiarFormulario()">LIMPIAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="table-section">
+    <div class="table-container">
+      <div class="table-wrapper">
+        <table class="deducibles-table">
+          <thead>
+            <tr>
+              <th>NOMBRE DE LA COBERTURA</th>
+              <th>LÍMITE INFERIOR</th>
+              <th>LÍMITE SUPERIOR</th>
+              <th>VALOR POR DEFECTO</th>
+              <th>OBSERVACIONES GENERALES</th>
+              <th>ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            @if (deducibles.length === 0) {
+              <tr class="empty-row">
+                <td colspan="6">
+                  No hay coberturas registradas. Agrega una nueva usando el formulario arriba.
+                </td>
+              </tr>
+            } @else {
+              @for (deducible of deducibles; track deducible.id) {
+                <tr class="table-row">
+                  <td class="nombre-cell">{{ deducible.nombreCobertura }}</td>
+                  <td class="numero-cell">{{ deducible.limiteInferior }}</td>
+                  <td class="numero-cell">{{ deducible.limiteSuperior }}</td>
+                  <td class="numero-cell">{{ deducible.valorPorDefecto }}</td>
+                  <td class="observaciones-cell">{{ deducible.observaciones }}</td>
+                  <td class="acciones-cell">
+                    <button type="button" class="btn-editar" (click)="abrirModal(deducible)">
+                      EDITAR
+                    </button>
+                    <button
+                      type="button"
+                      class="btn-eliminar"
+                      (click)="eliminarDeducible(deducible.id)"
+                    >
+                      ELIMINAR
+                    </button>
+                  </td>
+                </tr>
+              }
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Edición -->
+  @if (mostrarModal) {
+    <div class="modal-overlay" (click)="cerrarModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>EDITAR: {{ deducibleEditando?.nombreCobertura }}</h2>
+        <button type="button" class="btn-cerrar" (click)="cerrarModal()">✕</button>
+      </div>
+
+      <form class="modal-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nombreCoberturaEdit">NOMBRE DE LA COBERTURA</label>
+            <input
+              type="text"
+              id="nombreCoberturaEdit"
+              class="input-field"
+              [(ngModel)]="formEditando.nombreCobertura"
+              name="nombreCobertura"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="limiteInferiorEdit">LÍMITE INFERIOR</label>
+            <input
+              type="number"
+              id="limiteInferiorEdit"
+              class="input-field"
+              [(ngModel)]="formEditando.limiteInferior"
+              name="limiteInferior"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="limiteSuperiorEdit">LÍMITE SUPERIOR</label>
+            <input
+              type="number"
+              id="limiteSuperiorEdit"
+              class="input-field"
+              [(ngModel)]="formEditando.limiteSuperior"
+              name="limiteSuperior"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="valorPorDefectoEdit">VALOR POR DEFECTO</label>
+            <input
+              type="number"
+              id="valorPorDefectoEdit"
+              class="input-field"
+              [(ngModel)]="formEditando.valorPorDefecto"
+              name="valorPorDefecto"
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="observacionesEdit">OBSERVACIONES GENERALES</label>
+            <textarea
+              id="observacionesEdit"
+              class="textarea-field"
+              [(ngModel)]="formEditando.observaciones"
+              name="observaciones"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button type="button" class="btn-guardar" (click)="guardarCambios()">GUARDAR</button>
+          <button type="button" class="btn-cancelar" (click)="cerrarModal()">CANCELAR</button>
+        </div>
+      </form>
+    </div>
+  }
+</div>

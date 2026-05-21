@@ -6,10 +6,12 @@ import { Ramo } from './components/ramo/ramo';
 import { TiposDeTerceros } from './components/tipos-de-terceros/tipos-de-terceros';
 import { DatosVariables } from './components/datos-variables/datos-variables';
 import { DatosFijos } from './components/datos-fijos/datos-fijos';
+import { Deducibles } from './components/deducibles/deducibles';
+import { Limites } from './components/limites/limites';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, NormasGenerales, Ramo, TiposDeTerceros, DatosVariables, DatosFijos],
+  imports: [CommonModule, NormasGenerales, Ramo, TiposDeTerceros, DatosVariables, DatosFijos, Deducibles, Limites],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

@@ -17,6 +17,10 @@
       <app-datos-variables></app-datos-variables>
     } @else if (selectedItem === 'DATOS FIJOS') {
       <app-datos-fijos></app-datos-fijos>
+    } @else if (selectedItem === 'DEDUCIBLES') {
+      <app-deducibles></app-deducibles>
+    } @else if (selectedItem === 'LIMITES') {
+      <app-limites></app-limites>
     } @else if (selectedItem) {
       <h2>{{ selectedItem }}</h2>
       <p>Contenido para {{ selectedItem }}</p>
