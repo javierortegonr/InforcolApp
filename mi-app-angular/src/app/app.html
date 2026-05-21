@@ -1,11 +1,7 @@
 <div class="container">
   <div class="menu">
     @for (item of menuItems; track item) {
-      <button
-        class="menu-item"
-        [class.selected]="selectedItem === item"
-        (click)="selectItem(item)"
-      >
+      <button class="menu-item" [class.selected]="selectedItem === item" (click)="selectItem(item)">
         {{ item }}
       </button>
     }
@@ -15,6 +11,8 @@
       <app-normas-generales></app-normas-generales>
     } @else if (selectedItem === 'RAMO') {
       <app-ramo></app-ramo>
+    } @else if (selectedItem === 'TIPOS DE TERCERO') {
+      <app-tipos-de-terceros></app-tipos-de-terceros>
     } @else if (selectedItem) {
       <h2>{{ selectedItem }}</h2>
       <p>Contenido para {{ selectedItem }}</p>
@@ -23,7 +21,3 @@
     }
   </div>
 </div>
-
-<router-outlet />
-
-

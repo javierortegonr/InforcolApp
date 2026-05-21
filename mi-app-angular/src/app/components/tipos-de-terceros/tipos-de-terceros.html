@@ -1,0 +1,144 @@
+<div class="terceros-container">
+  <div class="header">
+    <h1>TIPOS DE TERCEROS</h1>
+  </div>
+
+  <form class="form-container">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="tipo">TIPO DE TERCERO</label>
+        <input
+          type="text"
+          id="tipo"
+          class="input-field"
+          [(ngModel)]="form.tipo"
+          name="tipo"
+          placeholder="Ingrese el tipo de tercero"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="cantidadMaxima">CANTIDAD MAXIMA DE TIPO DE TERCERO</label>
+        <input
+          type="text"
+          id="cantidadMaxima"
+          class="input-field"
+          [(ngModel)]="form.cantidadMaxima"
+          name="cantidadMaxima"
+          placeholder="Ingrese la cantidad máxima"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="peticionDatos">PETICION ANTES DE LOS DATOS VARIABLES DEL RIESGO (S/N)</label>
+        <select
+          id="peticionDatos"
+          class="input-field select-field"
+          [(ngModel)]="form.peticionDatos"
+          name="peticionDatos"
+        >
+          <option value="">Seleccione</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="peticionPorcentaje">PETICION PORCENTAJE (S/N)</label>
+        <select
+          id="peticionPorcentaje"
+          class="input-field select-field"
+          [(ngModel)]="form.peticionPorcentaje"
+          name="peticionPorcentaje"
+        >
+          <option value="">Seleccione</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="hayPrincipal">HAY PRINCIPAL (S/N)</label>
+        <select
+          id="hayPrincipal"
+          class="input-field select-field"
+          [(ngModel)]="form.hayPrincipal"
+          name="hayPrincipal"
+        >
+          <option value="">Seleccione</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="obsGenerales">OBSERVACIONES GENERALES</label>
+        <input
+          type="text"
+          id="obsGenerales"
+          class="input-field"
+          [(ngModel)]="form.observacionesGenerales"
+          name="observacionesGenerales"
+          placeholder="Ingrese observaciones generales"
+        />
+      </div>
+
+      <div class="form-group full-width">
+        <label for="obsCliente">OBSERVACIONES CLIENTE</label>
+        <textarea
+          id="obsCliente"
+          class="textarea-field"
+          [(ngModel)]="form.observacionesCliente"
+          name="observacionesCliente"
+          placeholder="Ingrese observaciones del cliente..."
+          rows="3"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="btn-agregar" (click)="agregarTercero()">AGREGAR TERCERO</button>
+      <button type="button" class="btn-limpiar" (click)="limpiarFormulario()">LIMPIAR</button>
+    </div>
+  </form>
+
+  @if (terceros.length > 0) {
+    <div class="table-container">
+      <h2>TERCEROS AGREGADOS</h2>
+      <div class="table-wrapper">
+        <table class="terceros-table">
+          <thead>
+            <tr>
+              <th>TIPO DE TERCERO</th>
+              <th>CANTIDAD MAXIMA</th>
+              <th>PETICION DATOS</th>
+              <th>PETICION %</th>
+              <th>HAY PRINCIPAL</th>
+              <th>OBS. GENERALES</th>
+              <th>OBS. CLIENTE</th>
+              <th>ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (tercero of terceros; track tercero.id) {
+              <tr class="table-row">
+                <td>{{ tercero.tipo }}</td>
+                <td>{{ tercero.cantidadMaxima }}</td>
+                <td>{{ tercero.peticionDatos }}</td>
+                <td>{{ tercero.peticionPorcentaje }}</td>
+                <td>{{ tercero.hayPrincipal }}</td>
+                <td>{{ tercero.observacionesGenerales }}</td>
+                <td>{{ tercero.observacionesCliente }}</td>
+                <td>
+                  <button type="button" class="btn-eliminar" (click)="eliminarTercero(tercero.id)">
+                    ELIMINAR
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  }
+</div>

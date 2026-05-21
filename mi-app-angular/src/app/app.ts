@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { NormasGenerales } from './components/normas-generales/normas-generales';
 import { Ramo } from './components/ramo/ramo';
+import { TiposDeTerceros } from './components/tipos-de-terceros/tipos-de-terceros';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, NormasGenerales, Ramo],
+  imports: [RouterOutlet, CommonModule, NormasGenerales, Ramo, TiposDeTerceros],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   menuItems = [
@@ -29,7 +30,7 @@ export class App {
     'MODALIDADES',
     'APERTURA SINIESTROS',
     'TABLAS ADICIONALES',
-    'INFORMACION ISO'
+    'INFORMACION ISO',
   ];
 
   selectedItem: string | null = null;

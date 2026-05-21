@@ -7,67 +7,127 @@
     <div class="form-grid">
       <div class="form-group">
         <label for="nombre">NOMBRE DEL RAMO</label>
-        <input type="text" id="nombre" class="input-field" placeholder="Ingrese el nombre del ramo">
+        <input
+          type="text"
+          id="nombre"
+          class="input-field"
+          placeholder="Ingrese el nombre del ramo"
+        />
       </div>
 
       <div class="form-group">
         <label for="sector">SECTOR</label>
-        <input type="text" id="sector" class="input-field" placeholder="Ingrese el sector">
+        <select id="sector" class="input-field select-field">
+          <option value="">Seleccione un sector</option>
+          @for (sector of sectores; track sector) {
+            <option value="{{ sector }}">{{ sector }}</option>
+          }
+        </select>
       </div>
 
       <div class="form-group">
         <label for="colectivo">COLECTIVO (S/N)</label>
-        <input type="text" id="colectivo" class="input-field" placeholder="S / N">
+        <select id="colectivo" class="input-field select-field">
+          <option value="">Seleccione</option>
+          @for (opcion of opcionesSiNo; track opcion) {
+            <option value="{{ opcion }}">{{ opcion }}</option>
+          }
+        </select>
       </div>
 
       <div class="form-group">
         <label for="poliza">POLIZA GRUPO (S/N)</label>
-        <input type="text" id="poliza" class="input-field" placeholder="S / N">
+        <select id="poliza" class="input-field select-field">
+          <option value="">Seleccione</option>
+          @for (opcion of opcionesSiNo; track opcion) {
+            <option value="{{ opcion }}">{{ opcion }}</option>
+          }
+        </select>
       </div>
 
       <div class="form-group">
         <label for="multiperiodos">MULTIPERIODOS (S/N)</label>
-        <input type="text" id="multiperiodos" class="input-field" placeholder="S / N">
+        <select id="multiperiodos" class="input-field select-field">
+          <option value="">Seleccione</option>
+          @for (opcion of opcionesSiNo; track opcion) {
+            <option value="{{ opcion }}">{{ opcion }}</option>
+          }
+        </select>
       </div>
 
       <div class="form-group">
         <label for="hojas">HOJAS ANEXAS (S/N)</label>
-        <input type="text" id="hojas" class="input-field" placeholder="S / N">
+        <select id="hojas" class="input-field select-field">
+          <option value="">Seleccione</option>
+          @for (opcion of opcionesSiNo; track opcion) {
+            <option value="{{ opcion }}">{{ opcion }}</option>
+          }
+        </select>
       </div>
 
       <div class="form-group">
         <label for="clausulas">CLAUSULAS (S/N)</label>
-        <input type="text" id="clausulas" class="input-field" placeholder="S / N">
+        <select id="clausulas" class="input-field select-field">
+          <option value="">Seleccione</option>
+          @for (opcion of opcionesSiNo; track opcion) {
+            <option value="{{ opcion }}">{{ opcion }}</option>
+          }
+        </select>
       </div>
 
       <div class="form-group">
         <label for="obligatorio">OBLIGATORIO COTIZACION (S/N)</label>
-        <input type="text" id="obligatorio" class="input-field" placeholder="S / N">
+        <select id="obligatorio" class="input-field select-field">
+          <option value="">Seleccione</option>
+          @for (opcion of opcionesSiNo; track opcion) {
+            <option value="{{ opcion }}">{{ opcion }}</option>
+          }
+        </select>
       </div>
 
       <div class="form-group">
         <label for="calculo">CALCULO DE LA PRIMA</label>
-        <input type="text" id="calculo" class="input-field" placeholder="Describa el cálculo">
+        <select id="calculo" class="input-field select-field">
+          <option value="">Seleccione un tipo</option>
+          @for (tipo of calculoPrima; track tipo) {
+            <option value="{{ tipo }}">{{ tipo }}</option>
+          }
+        </select>
       </div>
 
       <div class="form-group">
         <label for="valorMinimo">VALOR PRIMA MINIMA POR POLIZA</label>
-        <input type="text" id="valorMinimo" class="input-field" placeholder="Ingrese el valor mínimo">
+        <input
+          type="text"
+          id="valorMinimo"
+          class="input-field"
+          placeholder="Ingrese el valor mínimo"
+        />
       </div>
 
       <div class="form-group">
         <label for="agentes">NUMERO DE AGENTES DE LA POLIZA</label>
-        <input type="text" id="agentes" class="input-field" placeholder="Ingrese el número">
+        <input type="text" id="agentes" class="input-field" placeholder="Ingrese el número" />
       </div>
 
       <div class="form-group">
         <label for="tercero">TIPOS DE TERCERO</label>
-        <input type="text" id="tercero" class="input-field" placeholder="Ingrese los tipos de tercero">
+        <input
+          type="text"
+          id="tercero"
+          class="input-field"
+          placeholder="Ingrese los tipos de tercero"
+        />
       </div>
 
       <div class="form-group full-width">
         <label for="adicional">INFORMACION ADICIONAL DEL RAMO</label>
-        <textarea id="adicional" class="textarea-field" placeholder="Ingrese información adicional..." rows="5"></textarea>
+        <textarea
+          id="adicional"
+          class="textarea-field"
+          placeholder="Ingrese información adicional..."
+          rows="5"
+        ></textarea>
       </div>
     </div>
 
@@ -77,4 +137,3 @@
     </div>
   </form>
 </div>
-
