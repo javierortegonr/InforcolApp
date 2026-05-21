@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DatabaseService } from '../../services/database';
 
 interface Tercero {
   id: number;
@@ -20,8 +21,9 @@ interface Tercero {
   templateUrl: './tipos-de-terceros.html',
   styleUrl: './tipos-de-terceros.css',
 })
-export class TiposDeTerceros {
+export class TiposDeTerceros implements OnInit {
   terceros: Tercero[] = [];
+  tiposTerceros: string[] = [];
   nextId = 1;
 
   form = {
@@ -33,6 +35,13 @@ export class TiposDeTerceros {
     observacionesGenerales: '',
     observacionesCliente: '',
   };
+
+  constructor(private dbService: DatabaseService) {}
+
+  async ngOnInit(): Promise<void> {
+    await this.dbService.initialize();
+    this.tiposTerceros = this.dbService.getTiposTerceros();
+  }
 
   agregarTercero(): void {
     if (this.form.tipo.trim()) {

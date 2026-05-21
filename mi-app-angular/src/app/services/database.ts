@@ -42,6 +42,20 @@ export class DatabaseService {
         tipo TEXT NOT NULL UNIQUE
       )
     `);
+
+    this.db.run(`
+      CREATE TABLE IF NOT EXISTS tipos_terceros (
+        id INTEGER PRIMARY KEY,
+        nombre TEXT NOT NULL UNIQUE
+      )
+    `);
+
+    this.db.run(`
+      CREATE TABLE IF NOT EXISTS tipos_campo (
+        id INTEGER PRIMARY KEY,
+        nombre TEXT NOT NULL UNIQUE
+      )
+    `);
   }
 
   private insertData(): void {
@@ -65,6 +79,32 @@ export class DatabaseService {
     primas.forEach((prima) => {
       try {
         this.db!.run('INSERT INTO calculo_prima (tipo) VALUES (?)', [prima]);
+      } catch (e) {}
+    });
+
+    const tiposTerceros = [
+      'TOMADOR',
+      'TOMADORES ALTERNOS',
+      'ASEGURADOS',
+      'CONDUCTORES',
+      'PROPIETARIOS',
+      'BENEFS. CONTINGENTE - VIDA',
+      'BENEFICIARIOS VIDA',
+      'PROPONENTE',
+      'ENDOSATARIO',
+      'PREVENTOR',
+      'ASEGURADO SINOT',
+    ];
+    tiposTerceros.forEach((tipo) => {
+      try {
+        this.db!.run('INSERT INTO tipos_terceros (nombre) VALUES (?)', [tipo]);
+      } catch (e) {}
+    });
+
+    const tiposCampo = ['Tipo de Campo', 'Carácter', 'Numérico', 'Fecha'];
+    tiposCampo.forEach((tipo) => {
+      try {
+        this.db!.run('INSERT INTO tipos_campo (nombre) VALUES (?)', [tipo]);
       } catch (e) {}
     });
   }
@@ -102,6 +142,30 @@ export class DatabaseService {
     }
     stmt.free();
     console.log('Cálculo Prima cargado:', result);
+    return result;
+  }
+
+  getTiposTerceros(): string[] {
+    if (!this.db) return [];
+    const stmt = this.db.prepare('SELECT nombre FROM tipos_terceros ORDER BY nombre');
+    const result: string[] = [];
+    while (stmt.step()) {
+      result.push(stmt.getAsObject()['nombre'] as string);
+    }
+    stmt.free();
+    console.log('Tipos de terceros cargados:', result);
+    return result;
+  }
+
+  getTiposCampo(): string[] {
+    if (!this.db) return [];
+    const stmt = this.db.prepare('SELECT nombre FROM tipos_campo ORDER BY nombre');
+    const result: string[] = [];
+    while (stmt.step()) {
+      result.push(stmt.getAsObject()['nombre'] as string);
+    }
+    stmt.free();
+    console.log('Tipos de campo cargados:', result);
     return result;
   }
 }

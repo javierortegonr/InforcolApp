@@ -1,0 +1,210 @@
+<div class="datos-fijos-container">
+  <div class="header">
+    <h1>DATOS FIJOS</h1>
+  </div>
+
+  <div class="table-container">
+    <div class="table-wrapper">
+      <table class="datos-fijos-table">
+        <thead>
+          <tr>
+            <th>NOMBRE DEL CAMPO</th>
+            <th>CAMPO TRONWEB</th>
+            <th>SECUENCIA</th>
+            <th>TIPO DE CAMPO</th>
+            <th>LONGITUD</th>
+            <th>OBLIGATORIO</th>
+            <th>PRESUPUESTO</th>
+            <th>PERMITE NULO</th>
+            <th>VALIDACION</th>
+            <th>VALORES VALIDOS</th>
+            <th>INFO ADICIONAL</th>
+            <th>OBSERVACIONES</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (dato of datosFijos; track dato.id) {
+            <tr class="table-row">
+              <td class="nombre-cell">{{ dato.nombreCampo }}</td>
+              <td>{{ dato.campoTronweb }}</td>
+              <td>{{ dato.secuencia }}</td>
+              <td>{{ dato.tipoCampo }}</td>
+              <td>{{ dato.longitudCampo }}</td>
+              <td>{{ dato.campoObligatorio }}</td>
+              <td>{{ dato.campoPresupuesto }}</td>
+              <td>{{ dato.campoNulo }}</td>
+              <td class="validacion-cell">{{ dato.validacion }}</td>
+              <td>{{ dato.valoresValidos }}</td>
+              <td>{{ dato.infoAdicional }}</td>
+              <td class="observaciones-cell">{{ dato.observaciones }}</td>
+              <td>
+                <button type="button" class="btn-editar" (click)="abrirModal(dato)">EDITAR</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal/Lightbox de Edición -->
+  @if (mostrarModal) {
+    <div class="modal-overlay" (click)="cerrarModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>EDITAR: {{ datoEditando?.nombreCampo }}</h2>
+        <button type="button" class="btn-cerrar" (click)="cerrarModal()">✕</button>
+      </div>
+
+      <form class="modal-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nombreCampo">NOMBRE DEL CAMPO</label>
+            <input
+              type="text"
+              id="nombreCampo"
+              class="input-field"
+              [(ngModel)]="formEditando.nombreCampo"
+              name="nombreCampo"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="campoTronweb">CAMPO TRONWEB</label>
+            <select
+              id="campoTronweb"
+              class="input-field select-field"
+              [(ngModel)]="formEditando.campoTronweb"
+              name="campoTronweb"
+            >
+              <option value="S">S</option>
+              <option value="N">N</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="secuencia">SECUENCIA</label>
+            <input
+              type="text"
+              id="secuencia"
+              class="input-field"
+              [(ngModel)]="formEditando.secuencia"
+              name="secuencia"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="tipoCampo">TIPO DE CAMPO</label>
+            <input
+              type="text"
+              id="tipoCampo"
+              class="input-field"
+              [(ngModel)]="formEditando.tipoCampo"
+              name="tipoCampo"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="longitudCampo">LONGITUD DEL CAMPO</label>
+            <input
+              type="text"
+              id="longitudCampo"
+              class="input-field"
+              [(ngModel)]="formEditando.longitudCampo"
+              name="longitudCampo"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="campoObligatorio">CAMPO OBLIGATORIO</label>
+            <select
+              id="campoObligatorio"
+              class="input-field select-field"
+              [(ngModel)]="formEditando.campoObligatorio"
+              name="campoObligatorio"
+            >
+              <option value="S">S</option>
+              <option value="N">N</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="campoPresupuesto">CAMPO PARA PRESUPUESTO</label>
+            <select
+              id="campoPresupuesto"
+              class="input-field select-field"
+              [(ngModel)]="formEditando.campoPresupuesto"
+              name="campoPresupuesto"
+            >
+              <option value="S">S</option>
+              <option value="N">N</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="campoNulo">EL CAMPO PERMITE NULO</label>
+            <select
+              id="campoNulo"
+              class="input-field select-field"
+              [(ngModel)]="formEditando.campoNulo"
+              name="campoNulo"
+            >
+              <option value="S">S</option>
+              <option value="N">N</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="validacion">VALIDACION DEL CAMPO</label>
+            <textarea
+              id="validacion"
+              class="textarea-field"
+              [(ngModel)]="formEditando.validacion"
+              name="validacion"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="valoresValidos">VALORES VALIDOS</label>
+            <textarea
+              id="valoresValidos"
+              class="textarea-field"
+              [(ngModel)]="formEditando.valoresValidos"
+              name="valoresValidos"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="infoAdicional">INFORMACION ADICIONAL</label>
+            <input
+              type="text"
+              id="infoAdicional"
+              class="input-field"
+              [(ngModel)]="formEditando.infoAdicional"
+              name="infoAdicional"
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="observaciones">OBSERVACIONES USUARIO</label>
+            <textarea
+              id="observaciones"
+              class="textarea-field"
+              [(ngModel)]="formEditando.observaciones"
+              name="observaciones"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button type="button" class="btn-guardar" (click)="guardarCambios()">GUARDAR</button>
+          <button type="button" class="btn-cancelar" (click)="cerrarModal()">CANCELAR</button>
+        </div>
+      </form>
+    </div>
+  }
+</div>

@@ -1,0 +1,371 @@
+<div class="datos-variables-container">
+  <div class="header">
+    <h1>DEFINICIÓN DATOS VARIABLES</h1>
+  </div>
+
+  <form class="form-container">
+    <!-- Sección 1: Información Básica -->
+    <div class="section-title">INFORMACIÓN BÁSICA</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="nombreCampo">NOMBRE DEL CAMPO</label>
+        <input
+          type="text"
+          id="nombreCampo"
+          class="input-field"
+          [(ngModel)]="form.nombreCampo"
+          name="nombreCampo"
+          placeholder="Ingrese el nombre del campo"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="tipoCampo">TIPO DE CAMPO</label>
+        <select
+          id="tipoCampo"
+          class="input-field select-field"
+          [(ngModel)]="form.tipoCampo"
+          name="tipoCampo"
+        >
+          <option value="">Seleccione un tipo</option>
+          @for (tipo of tiposCampo; track tipo) {
+            <option value="{{ tipo }}">{{ tipo }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="longitudCampo">LONGITUD DEL CAMPO</label>
+        <input
+          type="text"
+          id="longitudCampo"
+          class="input-field"
+          [(ngModel)]="form.longitudCampo"
+          name="longitudCampo"
+          placeholder="Ingrese la longitud"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="secuencia">SECUENCIA</label>
+        <input
+          type="text"
+          id="secuencia"
+          class="input-field"
+          [(ngModel)]="form.secuencia"
+          name="secuencia"
+          placeholder="Ingrese la secuencia"
+        />
+      </div>
+    </div>
+
+    <!-- Sección 2: Datos TRON -->
+    <div class="section-title">DATOS TRON</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="datoTronweb">DATO VARIABLE EN TRONWEB</label>
+        <input
+          type="text"
+          id="datoTronweb"
+          class="input-field"
+          [(ngModel)]="form.datoTronweb"
+          name="datoTronweb"
+          placeholder="Ingrese el dato TRONWEB"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="datoTronador">DATO VARIABLE EN TRONADOR</label>
+        <input
+          type="text"
+          id="datoTronador"
+          class="input-field"
+          [(ngModel)]="form.datoTronador"
+          name="datoTronador"
+          placeholder="Ingrese el dato TRONADOR"
+        />
+      </div>
+    </div>
+
+    <!-- Sección 3: Configuración Visible -->
+    <div class="section-title">CONFIGURACIÓN VISIBLE</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="datoVisible">DATO VISIBLE (S/N)</label>
+        <select
+          id="datoVisible"
+          class="input-field select-field"
+          [(ngModel)]="form.datoVisible"
+          name="datoVisible"
+        >
+          <option value="">Seleccione</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="mostraraSiniestros">CAMPO SE MOSTRARA EN SINIESTROS (S/N)</label>
+        <select
+          id="mostraraSiniestros"
+          class="input-field select-field"
+          [(ngModel)]="form.mostraraSiniestros"
+          name="mostraraSiniestros"
+        >
+          <option value="">Seleccione</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="permitNulo">PERMITE NULO (S/N)</label>
+        <select
+          id="permitNulo"
+          class="input-field select-field"
+          [(ngModel)]="form.permitNulo"
+          name="permitNulo"
+        >
+          <option value="">Seleccione</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="cobertura">COBERTURA</label>
+        <input
+          type="text"
+          id="cobertura"
+          class="input-field"
+          [(ngModel)]="form.cobertura"
+          name="cobertura"
+          placeholder="Ingrese la cobertura"
+        />
+      </div>
+    </div>
+
+    <!-- Sección 4: Validación y Reglas -->
+    <div class="section-title">VALIDACIÓN Y REGLAS</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="obligatorio">CAMPO OBLIGATORIO (S/N)</label>
+        <select
+          id="obligatorio"
+          class="input-field select-field"
+          [(ngModel)]="form.obligatorio"
+          name="obligatorio"
+        >
+          <option value="">Seleccione</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="claveTarifaria">CAMPO CLAVE TARIFARIA (S/N)</label>
+        <select
+          id="claveTarifaria"
+          class="input-field select-field"
+          [(ngModel)]="form.claveTarifaria"
+          name="claveTarifaria"
+        >
+          <option value="">Seleccione</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="paraPresupuesto">CAMPO PARA PRESUPUESTO (S/N)</label>
+        <select
+          id="paraPresupuesto"
+          class="input-field select-field"
+          [(ngModel)]="form.paraPresupuesto"
+          name="paraPresupuesto"
+        >
+          <option value="">Seleccione</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="solicitudCampo">SOLICITUD DEL CAMPO</label>
+        <input
+          type="text"
+          id="solicitudCampo"
+          class="input-field"
+          [(ngModel)]="form.solicitudCampo"
+          name="solicitudCampo"
+          placeholder="Ingrese la solicitud"
+        />
+      </div>
+    </div>
+
+    <!-- Sección 5: Valores y Defectos -->
+    <div class="section-title">VALORES Y DEFECTOS</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="valoresPosibles">VALORES POSIBLES 'AYUDA'</label>
+        <input
+          type="text"
+          id="valoresPosibles"
+          class="input-field"
+          [(ngModel)]="form.valoresPosibles"
+          name="valoresPosibles"
+          placeholder="Ingrese los valores posibles"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="valoresValidos">VALORES VALIDOS</label>
+        <input
+          type="text"
+          id="valoresValidos"
+          class="input-field"
+          [(ngModel)]="form.valoresValidos"
+          name="valoresValidos"
+          placeholder="Ingrese los valores válidos"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="valorDefecto">VALOR DEFECTO DEL CAMPO</label>
+        <input
+          type="text"
+          id="valorDefecto"
+          class="input-field"
+          [(ngModel)]="form.valorDefecto"
+          name="valorDefecto"
+          placeholder="Ingrese el valor defecto"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="regPreField">REG_PRE_FIELD</label>
+        <input
+          type="text"
+          id="regPreField"
+          class="input-field"
+          [(ngModel)]="form.regPreField"
+          name="regPreField"
+          placeholder="Ingrese REG_PRE_FIELD"
+        />
+      </div>
+    </div>
+
+    <!-- Sección 6: Reglas y Validación -->
+    <div class="section-title">REGLAS Y VALIDACIÓN</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="validacion">VALIDACION DEL CAMPO</label>
+        <input
+          type="text"
+          id="validacion"
+          class="input-field"
+          [(ngModel)]="form.validacion"
+          name="validacion"
+          placeholder="Ingrese la validación"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="codRegla">COD_REGLA</label>
+        <input
+          type="text"
+          id="codRegla"
+          class="input-field"
+          [(ngModel)]="form.codRegla"
+          name="codRegla"
+          placeholder="Ingrese el código de regla"
+        />
+      </div>
+    </div>
+
+    <!-- Sección 7: Observaciones -->
+    <div class="section-title">INFORMACIÓN ADICIONAL</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="infoAdicional">INFORMACION ADICIONAL DEL CAMPO (S/N)</label>
+        <select
+          id="infoAdicional"
+          class="input-field select-field"
+          [(ngModel)]="form.infoAdicional"
+          name="infoAdicional"
+        >
+          <option value="">Seleccione</option>
+          <option value="Si">Si</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Sección 8: Observaciones Cliente -->
+    <div class="section-title">OBSERVACIONES CLIENTE</div>
+    <div class="form-grid">
+      <div class="form-group full-width">
+        <label for="observacionesCliente">OBSERVACIONES CLIENTE</label>
+        <textarea
+          id="observacionesCliente"
+          class="textarea-field"
+          [(ngModel)]="form.observacionesCliente"
+          name="observacionesCliente"
+          placeholder="Ingrese observaciones del cliente..."
+          rows="3"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="btn-agregar" (click)="agregarDatoVariable()">
+        AGREGAR DATO VARIABLE
+      </button>
+      <button type="button" class="btn-limpiar" (click)="limpiarFormulario()">LIMPIAR</button>
+    </div>
+  </form>
+
+  @if (datosVariables.length > 0) {
+    <div class="table-container">
+      <h2>DATOS VARIABLES AGREGADOS</h2>
+      <div class="table-wrapper">
+        <table class="datos-table">
+          <thead>
+            <tr>
+              <th>NOMBRE DEL CAMPO</th>
+              <th>TIPO DE CAMPO</th>
+              <th>DATO TRONWEB</th>
+              <th>DATO TRONADOR</th>
+              <th>VISIBLE</th>
+              <th>OBLIGATORIO</th>
+              <th>SECUENCIA</th>
+              <th>ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (dato of datosVariables; track dato.id) {
+              <tr class="table-row">
+                <td>{{ dato.nombreCampo }}</td>
+                <td>{{ dato.tipoCampo }}</td>
+                <td>{{ dato.datoTronweb }}</td>
+                <td>{{ dato.datoTronador }}</td>
+                <td>{{ dato.datoVisible }}</td>
+                <td>{{ dato.obligatorio }}</td>
+                <td>{{ dato.secuencia }}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn-eliminar"
+                    (click)="eliminarDatoVariable(dato.id)"
+                  >
+                    ELIMINAR
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  }
+</div>

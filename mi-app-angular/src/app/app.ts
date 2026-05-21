@@ -4,10 +4,12 @@ import { RouterOutlet } from '@angular/router';
 import { NormasGenerales } from './components/normas-generales/normas-generales';
 import { Ramo } from './components/ramo/ramo';
 import { TiposDeTerceros } from './components/tipos-de-terceros/tipos-de-terceros';
+import { DatosVariables } from './components/datos-variables/datos-variables';
+import { DatosFijos } from './components/datos-fijos/datos-fijos';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, NormasGenerales, Ramo, TiposDeTerceros],
+  imports: [RouterOutlet, CommonModule, NormasGenerales, Ramo, TiposDeTerceros, DatosVariables, DatosFijos],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

@@ -13,6 +13,10 @@
       <app-ramo></app-ramo>
     } @else if (selectedItem === 'TIPOS DE TERCERO') {
       <app-tipos-de-terceros></app-tipos-de-terceros>
+    } @else if (selectedItem === 'DATOS VARIABLES') {
+      <app-datos-variables></app-datos-variables>
+    } @else if (selectedItem === 'DATOS FIJOS') {
+      <app-datos-fijos></app-datos-fijos>
     } @else if (selectedItem) {
       <h2>{{ selectedItem }}</h2>
       <p>Contenido para {{ selectedItem }}</p>
