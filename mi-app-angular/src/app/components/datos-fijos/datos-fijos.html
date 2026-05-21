@@ -3,6 +3,8 @@
     <h1>DATOS FIJOS</h1>
   </div>
 
+  <!-- PÓLIZA TABLE -->
+  <div class="section-title">PÓLIZA</div>
   <div class="table-container">
     <div class="table-wrapper">
       <table class="datos-fijos-table">
@@ -48,7 +50,235 @@
     </div>
   </div>
 
-  <!-- Modal/Lightbox de Edición -->
+  <!-- ASEGURADO TABLE -->
+  <div class="section-title">ASEGURADO</div>
+  <div class="table-container">
+    <div class="table-wrapper">
+      <table class="datos-fijos-table">
+        <thead>
+          <tr>
+            <th>GRUPO</th>
+            <th>NOMBRE DEL CAMPO</th>
+            <th>CAMPO TRONWEB</th>
+            <th>SECUENCIA</th>
+            <th>TIPO DE CAMPO</th>
+            <th>LONGITUD</th>
+            <th>OBLIGATORIO</th>
+            <th>PRESUPUESTO</th>
+            <th>PERMITE NULO</th>
+            <th>VALIDACION</th>
+            <th>VALORES VALIDOS</th>
+            <th>INFO ADICIONAL</th>
+            <th>OBSERVACIONES</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (fila of aseguradosFijos; track fila.id) {
+            <tr class="table-row">
+              <td [class]="'grupo-cell grupo-' + fila.grupo">
+                {{ fila.grupo }}
+              </td>
+              <td class="nombre-cell">{{ fila.nombreCampo }}</td>
+              <td>{{ fila.campoTronweb }}</td>
+              <td>{{ fila.secuencia }}</td>
+              <td>{{ fila.tipoCampo }}</td>
+              <td>{{ fila.longitudCampo }}</td>
+              <td>{{ fila.campoObligatorio }}</td>
+              <td>{{ fila.campoPresupuesto }}</td>
+              <td>{{ fila.campoNulo }}</td>
+              <td class="validacion-cell">{{ fila.validacion }}</td>
+              <td>{{ fila.valoresValidos }}</td>
+              <td>{{ fila.infoAdicional }}</td>
+              <td class="observaciones-cell">{{ fila.observaciones }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn-editar"
+                  (click)="abrirModalAsegurado(fila, aseguradosFijos)"
+                >
+                  EDITAR
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- RECIBOS TABLE -->
+  <div class="section-title">RECIBOS</div>
+  <div class="table-container">
+    <div class="table-wrapper">
+      <table class="datos-fijos-table">
+        <thead>
+          <tr>
+            <th>GRUPO</th>
+            <th>NOMBRE DEL CAMPO</th>
+            <th>CAMPO TRONWEB</th>
+            <th>SECUENCIA</th>
+            <th>TIPO DE CAMPO</th>
+            <th>LONGITUD</th>
+            <th>OBLIGATORIO</th>
+            <th>PRESUPUESTO</th>
+            <th>PERMITE NULO</th>
+            <th>VALIDACION</th>
+            <th>VALORES VALIDOS</th>
+            <th>INFO ADICIONAL</th>
+            <th>OBSERVACIONES</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (fila of recibosFijos; track fila.id) {
+            <tr class="table-row">
+              <td [class]="'grupo-cell grupo-' + fila.grupo">
+                {{ fila.grupo }}
+              </td>
+              <td class="nombre-cell">{{ fila.nombreCampo }}</td>
+              <td>{{ fila.campoTronweb }}</td>
+              <td>{{ fila.secuencia }}</td>
+              <td>{{ fila.tipoCampo }}</td>
+              <td>{{ fila.longitudCampo }}</td>
+              <td>{{ fila.campoObligatorio }}</td>
+              <td>{{ fila.campoPresupuesto }}</td>
+              <td>{{ fila.campoNulo }}</td>
+              <td class="validacion-cell">{{ fila.validacion }}</td>
+              <td>{{ fila.valoresValidos }}</td>
+              <td>{{ fila.infoAdicional }}</td>
+              <td class="observaciones-cell">{{ fila.observaciones }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn-editar"
+                  (click)="abrirModalAsegurado(fila, recibosFijos)"
+                >
+                  EDITAR
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PRODUCTOR TABLE -->
+  <div class="section-title">PRODUCTOR</div>
+  <div class="table-container">
+    <div class="table-wrapper">
+      <table class="datos-fijos-table">
+        <thead>
+          <tr>
+            <th>GRUPO</th>
+            <th>NOMBRE DEL CAMPO</th>
+            <th>CAMPO TRONWEB</th>
+            <th>SECUENCIA</th>
+            <th>TIPO DE CAMPO</th>
+            <th>LONGITUD</th>
+            <th>OBLIGATORIO</th>
+            <th>PRESUPUESTO</th>
+            <th>PERMITE NULO</th>
+            <th>VALIDACION</th>
+            <th>VALORES VALIDOS</th>
+            <th>INFO ADICIONAL</th>
+            <th>OBSERVACIONES</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (fila of productorFijos; track fila.id) {
+            <tr class="table-row">
+              <td [class]="'grupo-cell grupo-' + fila.grupo">
+                {{ fila.grupo }}
+              </td>
+              <td class="nombre-cell">{{ fila.nombreCampo }}</td>
+              <td>{{ fila.campoTronweb }}</td>
+              <td>{{ fila.secuencia }}</td>
+              <td>{{ fila.tipoCampo }}</td>
+              <td>{{ fila.longitudCampo }}</td>
+              <td>{{ fila.campoObligatorio }}</td>
+              <td>{{ fila.campoPresupuesto }}</td>
+              <td>{{ fila.campoNulo }}</td>
+              <td class="validacion-cell">{{ fila.validacion }}</td>
+              <td>{{ fila.valoresValidos }}</td>
+              <td>{{ fila.infoAdicional }}</td>
+              <td class="observaciones-cell">{{ fila.observaciones }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn-editar"
+                  (click)="abrirModalAsegurado(fila, productorFijos)"
+                >
+                  EDITAR
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- OTRAS INTERVENCIONES TABLE -->
+  <div class="section-title">OTRAS INTERVENCIONES</div>
+  <div class="table-container">
+    <div class="table-wrapper">
+      <table class="datos-fijos-table">
+        <thead>
+          <tr>
+            <th>GRUPO</th>
+            <th>NOMBRE DEL CAMPO</th>
+            <th>CAMPO TRONWEB</th>
+            <th>SECUENCIA</th>
+            <th>TIPO DE CAMPO</th>
+            <th>LONGITUD</th>
+            <th>OBLIGATORIO</th>
+            <th>PRESUPUESTO</th>
+            <th>PERMITE NULO</th>
+            <th>VALIDACION</th>
+            <th>VALORES VALIDOS</th>
+            <th>INFO ADICIONAL</th>
+            <th>OBSERVACIONES</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (fila of otrasIntervencionesFijos; track fila.id) {
+            <tr class="table-row">
+              <td [class]="'grupo-cell grupo-' + fila.grupo">
+                {{ fila.grupo }}
+              </td>
+              <td class="nombre-cell">{{ fila.nombreCampo }}</td>
+              <td>{{ fila.campoTronweb }}</td>
+              <td>{{ fila.secuencia }}</td>
+              <td>{{ fila.tipoCampo }}</td>
+              <td>{{ fila.longitudCampo }}</td>
+              <td>{{ fila.campoObligatorio }}</td>
+              <td>{{ fila.campoPresupuesto }}</td>
+              <td>{{ fila.campoNulo }}</td>
+              <td class="validacion-cell">{{ fila.validacion }}</td>
+              <td>{{ fila.valoresValidos }}</td>
+              <td>{{ fila.infoAdicional }}</td>
+              <td class="observaciones-cell">{{ fila.observaciones }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn-editar"
+                  (click)="abrirModalAsegurado(fila, otrasIntervencionesFijos)"
+                >
+                  EDITAR
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal/Lightbox de Edición para Póliza -->
   @if (mostrarModal) {
     <div class="modal-overlay" (click)="cerrarModal()"></div>
     <div class="modal-content">
@@ -203,6 +433,170 @@
         <div class="modal-buttons">
           <button type="button" class="btn-guardar" (click)="guardarCambios()">GUARDAR</button>
           <button type="button" class="btn-cancelar" (click)="cerrarModal()">CANCELAR</button>
+        </div>
+      </form>
+    </div>
+  }
+
+  <!-- Modal/Lightbox de Edición para FilaFijo (Asegurado, Recibos, Productor, Otras Intervenciones) -->
+  @if (mostrarModalAsegurado) {
+    <div class="modal-overlay" (click)="cerrarModalAsegurado()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>EDITAR: {{ aseguradoEditando?.nombreCampo }}</h2>
+        <button type="button" class="btn-cerrar" (click)="cerrarModalAsegurado()">✕</button>
+      </div>
+
+      <form class="modal-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nombreCampoAseg">NOMBRE DEL CAMPO</label>
+            <input
+              type="text"
+              id="nombreCampoAseg"
+              class="input-field"
+              [(ngModel)]="formEditandoAsegurado.nombreCampo"
+              name="nombreCampo"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="campoTronwebAseg">CAMPO TRONWEB</label>
+            <select
+              id="campoTronwebAseg"
+              class="input-field select-field"
+              [(ngModel)]="formEditandoAsegurado.campoTronweb"
+              name="campoTronweb"
+            >
+              <option value="S">S</option>
+              <option value="N">N</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="secuenciaAseg">SECUENCIA</label>
+            <input
+              type="text"
+              id="secuenciaAseg"
+              class="input-field"
+              [(ngModel)]="formEditandoAsegurado.secuencia"
+              name="secuencia"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="tipoCampoAseg">TIPO DE CAMPO</label>
+            <input
+              type="text"
+              id="tipoCampoAseg"
+              class="input-field"
+              [(ngModel)]="formEditandoAsegurado.tipoCampo"
+              name="tipoCampo"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="longitudCampoAseg">LONGITUD DEL CAMPO</label>
+            <input
+              type="text"
+              id="longitudCampoAseg"
+              class="input-field"
+              [(ngModel)]="formEditandoAsegurado.longitudCampo"
+              name="longitudCampo"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="campoObligatorioAseg">CAMPO OBLIGATORIO</label>
+            <select
+              id="campoObligatorioAseg"
+              class="input-field select-field"
+              [(ngModel)]="formEditandoAsegurado.campoObligatorio"
+              name="campoObligatorio"
+            >
+              <option value="S">S</option>
+              <option value="N">N</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="campoPresupuestoAseg">CAMPO PARA PRESUPUESTO</label>
+            <select
+              id="campoPresupuestoAseg"
+              class="input-field select-field"
+              [(ngModel)]="formEditandoAsegurado.campoPresupuesto"
+              name="campoPresupuesto"
+            >
+              <option value="S">S</option>
+              <option value="N">N</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="campoNuloAseg">EL CAMPO PERMITE NULO</label>
+            <select
+              id="campoNuloAseg"
+              class="input-field select-field"
+              [(ngModel)]="formEditandoAsegurado.campoNulo"
+              name="campoNulo"
+            >
+              <option value="S">S</option>
+              <option value="N">N</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="validacionAseg">VALIDACION DEL CAMPO</label>
+            <textarea
+              id="validacionAseg"
+              class="textarea-field"
+              [(ngModel)]="formEditandoAsegurado.validacion"
+              name="validacion"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="valoresValidosAseg">VALORES VALIDOS</label>
+            <textarea
+              id="valoresValidosAseg"
+              class="textarea-field"
+              [(ngModel)]="formEditandoAsegurado.valoresValidos"
+              name="valoresValidos"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="infoAdicionalAseg">INFORMACION ADICIONAL</label>
+            <input
+              type="text"
+              id="infoAdicionalAseg"
+              class="input-field"
+              [(ngModel)]="formEditandoAsegurado.infoAdicional"
+              name="infoAdicional"
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="observacionesAseg">OBSERVACIONES USUARIO</label>
+            <textarea
+              id="observacionesAseg"
+              class="textarea-field"
+              [(ngModel)]="formEditandoAsegurado.observaciones"
+              name="observaciones"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button type="button" class="btn-guardar" (click)="guardarCambiosAsegurado()">
+            GUARDAR
+          </button>
+          <button type="button" class="btn-cancelar" (click)="cerrarModalAsegurado()">
+            CANCELAR
+          </button>
         </div>
       </form>
     </div>
